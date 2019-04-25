@@ -5,12 +5,16 @@ Add/Multiple Microservice CRUD
 
 TechStack
 
-1. Go language
-2. GRPC
-3. REST interface
-4. Swagger
-5. Docker 
-6. Kubernetes
+0. how to entity -> swagger / Go codes
+1. Go language - done
+2. GRPC - done
+3. REST interface - mux / Gin is done
+3.1 Mock unit test & Integration test
+4. Swagger - think
+5. Docker - ytd
+6. Kubernetes - ytd
+
+
 
 
 Command Run:
