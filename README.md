@@ -16,4 +16,5 @@ TechStack
 Command Run:
 
 protoc --proto_path=proto --go_out=plugins=grpc:proto service.proto
+
 go get github.com/gin-gonic/gin
