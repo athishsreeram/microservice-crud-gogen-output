@@ -1,0 +1,95 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/add": {
+      "post": {
+        "operationId": "Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AddService"
+        ]
+      }
+    },
+    "/v1/mul": {
+      "post": {
+        "operationId": "Multiply",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AddService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protoRequest": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string",
+          "format": "int64"
+        },
+        "b": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "protoResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
