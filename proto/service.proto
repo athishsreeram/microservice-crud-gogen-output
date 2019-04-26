@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package proto;
 
+import "google/api/annotations.proto";
+
 message Request {
   int64 a = 1;
   int64 b = 2;
@@ -12,6 +14,18 @@ message Response {
 }
 
 service AddService {
-  rpc Add(Request) returns (Response);
-  rpc Multiply(Request) returns (Response);
+  rpc Add(Request) returns (Response){
+    option (google.api.http) = {
+      post: "/v1/add"
+      body: "*"
+    };
+  }
+  
+  rpc Multiply(Request) returns (Response){
+    option (google.api.http) = {
+      post: "/v1/mul"
+      body: "*"
+    };
+  }
+
 }

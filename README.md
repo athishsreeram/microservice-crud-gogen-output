@@ -19,6 +19,26 @@ TechStack
 
 Command Run:
 
-protoc --proto_path=proto --go_out=plugins=grpc:proto service.proto
 
-go get github.com/gin-gonic/gin
+https://github.com/grpc-ecosystem/grpc-gateway
+
+go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+go get -u github.com/golang/protobuf/protoc-gen-go
+
+protoc --proto_path=proto -I/usr/local/include -I. \
+  -I$GOPATH/src \
+  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --go_out=plugins=grpc:proto service.proto
+
+protoc --proto_path=proto -I/usr/local/include -I. \
+  -I$GOPATH/src \
+  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --grpc-gateway_out=logtostderr=true:proto service.proto
+
+protoc --proto_path=proto  -I/usr/local/include -I. \
+  -I$GOPATH/src \
+  -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+  --swagger_out=logtostderr=true:proto service.proto
+
+protoc --proto_path=proto --go_out=plugins=grpc:proto service.proto
