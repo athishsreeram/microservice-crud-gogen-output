@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/api/annotations.proto";
+
+    
+
+message ToDo {
+        
+  int64    id = 1; 
+  string    title = 2;     
+}
+
+message ReadAllRequest {
+        
+  int64    v1 = 1;     
+}
+
+message ReadAllResponse {
+        
+  int64    v1 = 1; 
+repeated ToDo    toDos = 2;     
+}
+
+message CreateRequest {
+        
+  int64    v1 = 1; 
+    ToDo toDo = 2;     
+}
+
+message CreateResponse {
+        
+  int64    v1 = 1; 
+  int64    id = 2;     
+}
+
+message UpdateRequest {
+        
+  int64    v1 = 1; 
+  int64    id = 2; 
+    ToDo toDo = 3;     
+}
+
+message UpdateResponse {
+        
+  int64    v1 = 1; 
+  int64    updated = 2;     
+}
+
+message DeleteRequest {
+        
+  int64    v1 = 1; 
+  int64    id = 2;     
+}
+
+message DeleteResponse {
+        
+  int64    v1 = 1; 
+  bool    deleted = 2;     
+}
+
+message ReadRequest {
+        
+  int64    v1 = 1; 
+  int64    id = 2;     
+}
+
+message ReadResponse {
+        
+  int64    v1 = 1; 
+    ToDo toDo = 2;     
+}
+
+
+
+ 
+
+service TestService {
+ 
+    rpc ReadAll(ReadAllRequest) returns (ReadAllResponse){
+        option (google.api.http) = {
+            get: "/todo/all"
+         
+        };
+    }
+ 
+    rpc Create(CreateRequest) returns (CreateResponse){
+        option (google.api.http) = {
+            post: "/todo"
+           body: "*"  
+        };
+    }
+ 
+    rpc Update(UpdateRequest) returns (UpdateResponse){
+        option (google.api.http) = {
+            put: "/todo/{id}"
+           body: "*" 
+        };
+    }
+ 
+    rpc Delete(DeleteRequest) returns (DeleteResponse){
+        option (google.api.http) = {
+            delete: "/todo/{id}"
+         
+        };
+    }
+ 
+    rpc Read(ReadRequest) returns (ReadResponse){
+        option (google.api.http) = {
+            get: "/todo/{id}"
+         
+        };
+    }
+
+
+}
